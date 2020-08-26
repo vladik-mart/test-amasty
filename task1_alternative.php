@@ -2,7 +2,7 @@
 
 class First
 {
-    public $letter = "A";
+    protected $letter = "A";
 
     public function getClassname()
     {
@@ -17,7 +17,7 @@ class First
 
 class Second extends First
 {
-    public $letter = "B";
+    protected $letter = "B";
 }
 
 $first = new First();
