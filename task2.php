@@ -9,8 +9,17 @@ class StroopTest
 
     public function __construct($rows = 5, $cols = 5)
     {
+        $maxRows = $this->maxRows();
+        if($rows > $maxRows) {
+            die(sprintf('Максимальное количество рядов с таким набором слов = %s (введено %s)', $maxRows, $rows));
+        }
         $this->rows = $rows;
         $this->cols = $cols;
+    }
+
+    private function maxRows()
+    {
+        return intval(count(self::WORDS) / 2);
     }
 
     private function Row()
@@ -47,5 +56,5 @@ class StroopTest
     }
 }
 
-echo new StroopTest();
+echo new StroopTest(5, 5);
 
