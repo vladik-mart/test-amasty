@@ -57,4 +57,3 @@ class StroopTest
 }
 
 echo new StroopTest(5, 5);
-

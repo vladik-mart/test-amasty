@@ -1,6 +1,14 @@
 /*
 а) написать запрос, который бы выводил полное имя и баланс человека на данный момент
 */
+SELECT p.fullname,
+       (
+            (SELECT COALESCE(SUM(t.amount), 0) FROM transactions as t WHERE t.to_person_id = p.id) -
+            (SELECT COALESCE(SUM(t.amount), 0) FROM transactions as t WHERE t.from_person_id = p.id) + 100
+       ) AS balance
+FROM persons as p
+ORDER BY `balance`  DESC
+
 /*Через функциию*/
 DROP FUNCTION IF EXISTS balance_calc;
 DELIMITER $$
